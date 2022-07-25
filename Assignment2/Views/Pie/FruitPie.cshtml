@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Assignment2.Models.Pie>
+
+<html>
+    <div class="text-center">
+    <h1 style="background-color:ghostwhite"> FRUIT PIES MENU </h1>
+    </div>
+
+    <head>
+        <body>
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypie.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>STRAWBERRY PIE</h5>
+        <p>Strawberry pie is a dessert food consisting mainly of strawberries. Strawberry pie mostly consists of strawberries, sugar, a pie crust, and sometimes gelatin. Usually about 70% of the pie by weight is strawberries. It is often served with whipped cream, or sometimes with ice cream.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://gillcleerenpluralsight.blob.core.windows.net/files/cherrypie.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>CHERRY PIE</h5>
+        <p>Cherry pie is a pie baked with a cherry filling. Traditionally, cherry pie is made with sour cherries rather than sweet cherries. Morello cherries are one of the most common kinds of cherry used, but other varieties such as the black cherry may also be used.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://gillcleerenpluralsight.blob.core.windows.net/files/rhubarbpie.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>RHUBARB PIE</h5>
+        <p>Rhubarb pie is a pie with a rhubarb filling. </p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+        </body>
+    </head>
+   @*<body class="text-dark">
+        <style>
+            body{
+                background-image:url("/Images/fruitpie.jpg");
+            }
+        </style>
+    </body> *@
+    <p> 
+        <h1>
+               @*  @Model.CurrentCategory you can get both category and files*@
+        </h1>
+        
+    </p>
+    <body>
+        @foreach (var pie in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <img src="@pie.ImageThumbnailUrl" alt="">
+                         <div class="caption">
+                             <h3 class="pull-right">@pie.Price.ToString("c")</h3>
+                             <h3>
+                                <a asp-controller = "Pie" asp-action="Details" asp-route-id = "@pie.PieId">@pie.Name</a>
+                             </h3>
+                             <p>@pie.ShortDescription</p>
+                          </div>
+                </div>
+           </div>
+        }
+        @*it gives us a form
+        <a asp-action="Create"> Create New</a><br /> *@
+    </body>
+</html>
